@@ -1,11 +1,25 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Layout from './components/Layout'
+import Dashboard from './pages/Dashboard'
+import Employees from './pages/Employees'
+import Attendance from './pages/Attendance'
+import Payroll from './pages/Payroll'
+import Settings from './pages/Settings'
+
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground p-6">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-2xl font-semibold">JASCO RiseOne</h1>
-        <p className="mt-2 text-sm opacity-80">React + Vite + Tailwind is now working.</p>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}> 
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/employees" element={<Employees />} />
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/payroll" element={<Payroll />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
